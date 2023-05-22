@@ -11,7 +11,7 @@ export default function App() {
     const fetchNews = async () => {
       try {
         const response = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`
+          `https://newsapi.org/v2/top-headlines?country=us&apiKey=965d031b6cc041abb0534c1a9335709c`
         );
         const data = await response.json();
         const news = data.articles[0];
