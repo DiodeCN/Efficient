@@ -1,10 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { TextField, Button, Typography, Box } from '@mui/material';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  const handleCountIncrement = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
 
   return (
     <>
@@ -16,20 +21,32 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
+      <Typography variant="h1" align="center">
+        Vite + React
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <Box sx={{ width: 300 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+            <Button onClick={handleCountIncrement}>
+              count is {count}
+            </Button>
+          </Box>
+          <Typography variant="body1" align="center">
+            Edit <code>src/App.tsx</code> and save to test HMR
+          </Typography>
+          <TextField label="Enter Text" variant="outlined" fullWidth sx={{ mt: 2 }} />
+          <Box sx={{ border: '1px solid #ccc', borderRadius: 4, p: 2, mt: 2 }}>
+            <Typography variant="body1">
+              This is a bordered paragraph.
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+      <Typography variant="body1" align="center" sx={{ mt: 4 }}>
         Click on the Vite and React logos to learn more
-      </p>
+      </Typography>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
