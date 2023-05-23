@@ -1,15 +1,9 @@
-import { useState } from 'react';
-import { TextField, Button, Typography, Box } from '@mui/material';
+import { TextField, Typography, Box } from '@mui/material';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const handleCountIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
 
   return (
     <>
@@ -26,11 +20,6 @@ function App() {
       </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
         <Box sx={{ width: 300 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-            <Button onClick={handleCountIncrement}>
-              count is {count}
-            </Button>
-          </Box>
           <Typography variant="body1" align="center">
             Edit <code>src/App.tsx</code> and save to test HMR
           </Typography>
