@@ -9,30 +9,17 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fileReader = new FileReader();
-        fileReader.onload = function (event) {
-          const content = event.target.result;
-          const data = JSON.parse(content);
+        const response = await fetch('http://localhost:8000/data.json');
+        const data = await response.json();
 
-          if (data.title && data.context) {
-            setTextFieldTitle(data.title);
-            setTextFieldContext(data.context);
-          } else {
-            // Create default values if required fields are missing
-            setTextFieldTitle('Default Title');
-            setTextFieldContext('Default Context');
-          }
-        };
-
-        fileReader.onerror = function (error) {
-          // Handle any error while reading the file
-          console.error('Error reading the JSON file:', error);
-          // Create default values if the file doesn't exist
+        if (data.title && data.context) {
+          setTextFieldTitle(data.title);
+          setTextFieldContext(data.context);
+        } else {
+          // Create default values if required fields are missing
           setTextFieldTitle('Default Title');
           setTextFieldContext('Default Context');
-        };
-
-        fileReader.readAsText('data.json');
+        }
       } catch (error) {
         // Handle any error while fetching the JSON file
         console.error('Error fetching JSON file:', error);
